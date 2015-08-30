@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QSerialPortInfo>
 #include <QSerialPort>
+#include <QTimer>
 namespace Ui {
 class RF_Dialog;
 }
@@ -23,8 +24,16 @@ private slots:
 
     void on_btn_update_clicked();
 
+    void on_btnOpen_clicked();
+
 private:
     Ui::RF_Dialog *ui;
+    QSerialPort pt;
+    int read_mode;
+    unsigned int buffer[19];
+    QTimer tmr;
+private slots:
+    void on_tmr();
 };
 
 #endif // RF_DIALOG_H
